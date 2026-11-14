@@ -70,7 +70,7 @@ const movies = [
   ];
 
 mongoose
-  .connect('mongodb://localhost/cinema', {useNewUrlParser: true})
+  .connect(process.env.MONGODB_URI || 'mongodb://localhost/cinema', {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
     Movie.create(movies)
